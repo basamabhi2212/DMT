@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Driver Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="dashboard">
+    <h2>Welcome, <span id="name"></span></h2>
+    <div id="tripInfo"></div>
+    <button onclick="startTrip()">Start Trip</button>
+    <button onclick="endTrip()">End Trip</button>
+    <p><strong>QR Code:</strong> <span id="qrCodeName"></span></p>
+    <p id="licenseAlert"></p>
+  </div>
+
+  <script>
+    const driver = JSON.parse(localStorage.getItem("driver"));
+    if (!driver) window.location.href = "index.html";
+
+    document.getElementById("name").innerText = driver.name;
+    document.getElementById("qrCodeName").innerText = driver.qrCode || "Not uploaded";
+
+    // License Expiry Alert
+    const expiryDate = new Date(driver.expiryDate);
+    const today = new Date();
+    const diffDays = Math.ceil((expiryDate - today) / (1000 * 60 * 60 * 24));
+    if (diffDays <= 30) {
+      document.getElementById("licenseAlert").innerText =
+        "⚠️ Your license will expire soon! (" + driver.expiryDate + ")";
+      document.getElementById("licenseAlert").style.color = "red";
+    }
+
+    // Simulate Assigned Trip
+    const trip = {
+      pickup: "Home",
+      drop: "Office",
+      time: new Date().toLocaleString()
+    };
+
+    document.getElementById("tripInfo").innerHTML = `
+      <h3>Assigned Trip</h3>
+      <p>Pickup: ${trip.pickup}</p>
+      <p>Drop: ${trip.drop}</p>
+      <p>Scheduled Time: ${trip.time}</p>
+    `;
+
+    function startTrip() {
+      alert("Taking selfie before starting trip...");
+      const now = new Date();
+      alert(`Selfie captured at ${now.toLocaleString()}, Location: Bangalore`);
+    }
+
+    function endTrip() {
+      const fare = 500 + Math.floor(Math.random() * 200); // random fare
+      alert(`Trip ended. Final bill: ₹${fare} (includes 40% extra for customer pricing)`);
+    }
+  </script>
+</body>
+</html>

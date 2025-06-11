@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Driver Registration</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="form-container">
+    <h2>Register as Driver</h2>
+    <input type="text" id="driverId" placeholder="Driver ID" />
+    <input type="text" id="license" placeholder="License Number" />
+    <input type="date" id="expiryDate" />
+    <input type="file" id="qrCode" accept="image/*" />
+    <button onclick="register()">Register</button>
+  </div>
+
+  <script>
+    function register() {
+      const driver = {
+        driverId: document.getElementById("driverId").value,
+        licenseNumber: document.getElementById("license").value,
+        expiryDate: document.getElementById("expiryDate").value,
+        qrCode: document.getElementById("qrCode").files[0]?.name || null
+      };
+      alert("Registration successful! You can now log in.");
+      // In real app, send this to backend or save locally
+    }
+  </script>
+</body>
+</html>

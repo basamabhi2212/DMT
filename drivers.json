@@ -1,0 +1,16 @@
+[
+  {
+    "driverId": "D1001",
+    "name": "Rajesh Kumar",
+    "licenseNumber": "KA19-20200101",
+    "expiryDate": "2025-12-31",
+    "qrCode": "rajesh_qr.png"
+  },
+  {
+    "driverId": "D1002",
+    "name": "Suresh Reddy",
+    "licenseNumber": "TS12-20210202",
+    "expiryDate": "2024-10-15",
+    "qrCode": "suresh_qr.png"
+  }
+]
