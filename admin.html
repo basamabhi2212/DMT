@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="admin-dashboard">
+    <header class="dashboard-header">
+      <h1>Admin Dashboard</h1>
+      <div class="user-info">
+        <span id="welcomeMessage"></span>
+        <button onclick="logout()" class="logout-btn">Logout</button>
+      </div>
+    </header>
+    
+    <main class="dashboard-content">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <h3>Total Users</h3>
+          <p class="stat-number" id="totalUsers">6</p>
+        </div>
+        <div class="stat-card">
+          <h3>Active Drivers</h3>
+          <p class="stat-number" id="activeDrivers">2</p>
+        </div>
+        <div class="stat-card">
+          <h3>Total Trips</h3>
+          <p class="stat-number" id="totalTrips">45</p>
+        </div>
+        <div class="stat-card">
+          <h3>Revenue</h3>
+          <p class="stat-number" id="revenue">₹12,500</p>
+        </div>
+      </div>
+      
+      <div class="management-section">
+        <h2>User Management</h2>
+        <div class="user-list">
+          <div class="user-item">
+            <span>Admin User (admin1)</span>
+            <span class="role-badge admin">Admin</span>
+            <button class="action-btn">Manage</button>
+          </div>
+          <div class="user-item">
+            <span>Manager User (manager1)</span>
+            <span class="role-badge manager">Manager</span>
+            <button class="action-btn">Manage</button>
+          </div>
+          <div class="user-item">
+            <span>Rajesh Driver (driver1)</span>
+            <span class="role-badge driver">Driver</span>
+            <button class="action-btn">Manage</button>
+          </div>
+          <div class="user-item">
+            <span>John Customer (customer1)</span>
+            <span class="role-badge customer">Customer</span>
+            <button class="action-btn">Manage</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="quick-actions">
+        <h2>Quick Actions</h2>
+        <div class="action-buttons">
+          <button class="primary-btn" onclick="addUser()">Add New User</button>
+          <button class="primary-btn" onclick="viewReports()">View Reports</button>
+          <button class="primary-btn" onclick="manageTrips()">Manage Trips</button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // Check if user is logged in
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (!currentUser) {
+      window.location.href = 'index.html';
+    }
+
+    // Display welcome message
+    document.getElementById('welcomeMessage').textContent = `Welcome, ${currentUser.name}`;
+
+    function logout() {
+      localStorage.removeItem('currentUser');
+      localStorage.removeItem('driver');
+      window.location.href = 'index.html';
+    }
+
+    function addUser() {
+      alert('Add User functionality - would open a form to add new users');
+    }
+
+    function viewReports() {
+      alert('View Reports functionality - would show detailed analytics');
+    }
+
+    function manageTrips() {
+      alert('Manage Trips functionality - would show trip management interface');
+    }
+  </script>
+</body>
+</html>
